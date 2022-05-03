@@ -31,7 +31,7 @@ function App() {
           <h1 className="ml-2 text-2xl text-white hidden lg:block">CRM</h1>
         </div>
         <nav className=" my-4 text-white">
-          <ul className="text-lg">
+          <ul className="text-lg font-thin">
             <li>
               <NavLink
                 className="py-2 px-4 flex items-center justify-center lg:justify-start"
