@@ -2,7 +2,9 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import Avatar from './Components/Avatar';
-import Button from './Components/Button';
+import Contracts from './Components/Contracts';
+import EditModal from './Components/EditModal';
+import Protokols from './Components/Protocols';
 import Documents from './Pages/docsPage';
 import MainPage from './Pages/mainPage';
 
@@ -311,8 +313,14 @@ function App() {
         <div className="flex mt-4">
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/objects" element={<MainPage />} />
-            <Route path="/docs" element={<Documents />} />
+            <Route path="/objects" element={<MainPage />}>
+              <Route path=":id" element={<EditModal />} />
+            </Route>
+            <Route path="docs" element={<Documents />}>
+              <Route index element={<Contracts />} />
+              <Route path="contracts" element={<Contracts />} />
+              <Route path="protocols" element={<Protokols />} />
+            </Route>
           </Routes>
         </div>
       </div>
