@@ -8,7 +8,7 @@ const Button: FC<IButton> = ({ name }) => {
   return (
     <button
       type="button"
-      className="text-white bg-accent focus:outline-none font-medium rounded-lg text-sm px-5 py-2 drop-shadow-md  text-center mr-2 mb-2">
+      className="text-white bg-accent focus:outline-none  font-medium rounded-lg px-4 py-2 drop-shadow-md text-center mr-2">
       {name}
     </button>
   );

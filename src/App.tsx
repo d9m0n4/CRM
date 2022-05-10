@@ -1,5 +1,9 @@
+import Accaunts from 'Pages/accauntsPage';
+import Appeals from 'Pages/appelsPage';
+import Requests from 'Pages/requestsPage';
+import Votes from 'Pages/votesPage';
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import Avatar from './Components/Avatar';
 import Contracts from './Components/Contracts';
@@ -9,8 +13,13 @@ import Documents from './Pages/docsPage';
 import MainPage from './Pages/mainPage';
 
 function App() {
+  const location = useLocation();
+  let state = location.state as { backgroundLocation?: Location };
+
+  console.log(location);
+
   return (
-    <div className="flex h-screen container mx-auto">
+    <div className="flex h-screen container mx-auto text-base">
       {/* navbar */}
       <aside className="flex w-16 lg:w-64 flex-col bg-accentDark">
         <div className="w-100 flex justify-center lg:justify-start items-center my-4 lg:ml-4">
@@ -183,7 +192,7 @@ function App() {
             <li>
               <NavLink
                 className={'py-2 px-4 flex items-center justify-center lg:justify-start'}
-                to="/appels">
+                to="/appeals">
                 <i className="flex items-center">
                   <svg
                     width="16"
@@ -311,16 +320,20 @@ function App() {
         </div>
         {/* main */}
         <div className="flex mt-4">
-          <Routes>
+          <Routes location={state?.backgroundLocation || location}>
             <Route path="/" element={<MainPage />} />
-            <Route path="/objects" element={<MainPage />}>
-              <Route path=":id" element={<EditModal />} />
+            <Route path="objects" element={<MainPage />}>
+              <Route path="e" element={<EditModal />} />
             </Route>
             <Route path="docs" element={<Documents />}>
               <Route index element={<Contracts />} />
               <Route path="contracts" element={<Contracts />} />
               <Route path="protocols" element={<Protokols />} />
             </Route>
+            <Route path="accaunts" element={<Accaunts />} />
+            <Route path="requests" element={<Requests />} />
+            <Route path="votes" element={<Votes />} />
+            <Route path="appeals" element={<Appeals />} />
           </Routes>
         </div>
       </div>
