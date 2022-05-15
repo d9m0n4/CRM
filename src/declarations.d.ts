@@ -4,3 +4,4 @@ declare module '*.scss' {
 }
 
 declare module 'react-charty';
+declare module 'react-dadata-suggestions';

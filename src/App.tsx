@@ -1,16 +1,20 @@
-import Accaunts from 'Pages/accauntsPage';
-import Appeals from 'Pages/appelsPage';
-import Requests from 'Pages/requestsPage';
-import Votes from 'Pages/votesPage';
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import Avatar from './Components/Avatar';
-import Contracts from './Components/Contracts';
-import EditModal from './Components/EditModal';
-import Protokols from './Components/Protocols';
-import Documents from './Pages/docsPage';
-import MainPage from './Pages/mainPage';
+
+import Accaunts from 'Pages/accauntsPage';
+import Appeals from 'Pages/appelsPage';
+import Objects from 'Pages/objectsPage';
+import Requests from 'Pages/requestsPage';
+import Documents from 'Pages/docsPage';
+import MainPage from 'Pages/mainPage';
+import Votes from 'Pages/votesPage';
+
+import EditModal from 'Components/EditModal';
+import Protokols from 'Components/Protocols';
+import Contracts from 'Components/Contracts';
+import Avatar from 'Components/Avatar';
+import NotFound from 'Pages/404';
 
 function App() {
   const location = useLocation();
@@ -319,10 +323,10 @@ function App() {
           </div>
         </div>
         {/* main */}
-        <div className="flex mt-4">
+        <div className="flex mt-4 overflow-auto">
           <Routes location={state?.backgroundLocation || location}>
             <Route path="/" element={<MainPage />} />
-            <Route path="objects" element={<MainPage />}>
+            <Route path="objects" element={<Objects />}>
               <Route path="e" element={<EditModal />} />
             </Route>
             <Route path="docs" element={<Documents />}>
@@ -334,6 +338,7 @@ function App() {
             <Route path="requests" element={<Requests />} />
             <Route path="votes" element={<Votes />} />
             <Route path="appeals" element={<Appeals />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>

@@ -24,19 +24,20 @@ ChartJS.register(
 );
 
 export const options = {
+  maintainAspectRatio: false,
   responsive: true,
   plugins: {
     legend: {
-      position: 'bottom' as const,
+      position: 'left' as const,
     },
     title: {
       display: true,
-      text: 'Chart.js Line Chart',
+      text: 'Заявки',
     },
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['Выполнена', 'В работе', 'Выполнена'];
 
 export const data = {
   labels,
@@ -44,32 +45,7 @@ export const data = {
     {
       label: 'Dataset 1',
       data: labels.map(() => 3),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => 4),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
-
-export const data2 = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => 3),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => 4),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      backgroundColor: ['#2ED47A', '#1565C0', '#8613CD'],
     },
   ],
 };
@@ -79,9 +55,7 @@ interface IChartProps {
 }
 
 const Chart: React.FC<IChartProps> = ({ line }) => {
-  return (
-    <>{line ? <Line options={options} data={data} /> : <Pie options={options} data={data2} />}</>
-  );
+  return <>{<Pie height="270px" options={options} data={data} />}</>;
 };
 
 export default Chart;
