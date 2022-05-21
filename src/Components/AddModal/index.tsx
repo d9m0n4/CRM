@@ -1,17 +1,18 @@
+import Button from 'Components/Button';
 import React, { MouseEventHandler, ReactElement } from 'react';
 
 interface IModal {
   closeModal: MouseEventHandler;
   children: ReactElement | ReactElement[];
   header_name: string;
-  button_name: string;
+  button_name?: string;
 }
 
 const AddModal: React.FC<IModal> = ({ closeModal, children, header_name, button_name }) => {
   return (
-    <>
+    <div>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-        <div className="relative max-w-4xl my-6 mx-auto translate-x-32">
+        <div className="relative max-w-6xl  my-6 mx-auto translate-x-32">
           {/*content*/}
           <div className="px-8 py-4 border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*header*/}
@@ -45,19 +46,16 @@ const AddModal: React.FC<IModal> = ({ closeModal, children, header_name, button_
             <div className="flex flex-col mb-4">{children}</div>
             {/*footer*/}
 
-            <div className="flex items-center justify-end ">
-              <button
-                onClick={() => console.log(321)}
-                className="text-white bg-green active:shadow-sm font-bold uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button">
-                {button_name}
-              </button>
-            </div>
+            {button_name && (
+              <div className="flex items-center justify-end ">
+                <Button name={button_name} />
+              </div>
+            )}
           </div>
         </div>
       </div>
       <div className="opacity-75 fixed inset-0 z-40 bg-accentDark"></div>
-    </>
+    </div>
   );
 };
 
