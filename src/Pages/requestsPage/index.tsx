@@ -9,14 +9,15 @@ import Select from 'Components/Select';
 import ModalInput from 'Components/ModalInput';
 
 const Requests = () => {
+  const options = ['кв 1', 'кв 2'];
+  const houses = ['г. Яранск, ул. Пролетарская, д. 3', 'г. Яранск, ул. Производственная, д. 11'];
+
   const [showModal, setShowModal] = useState(false);
+  const [fl, setFl] = useState<typeof options[number]>('кв. 1');
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
-
-  const options = ['кв 1', 'кв 2'];
-  const houses = ['г. Яранск, ул. Пролетарская, д. 3', 'г. Яранск, ул. Производственная, д. 11'];
 
   return (
     <div className="flex w-full flex-col">
@@ -32,11 +33,11 @@ const Requests = () => {
               <div className="flex mb-4">
                 <div className="mx-2 w-80">
                   <span>Вид документа</span>
-                  <Select options={options} />
+                  <Select value={fl} onChange={setFl} options={options} />
                 </div>
                 <div className="mx-2 w-80">
                   <span>Управляемый объект</span>
-                  <Select options={houses} />
+                  <Select value={fl} onChange={setFl} options={houses} />
                 </div>
               </div>
               <div className="flex mb-4">

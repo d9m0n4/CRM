@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 interface IDataElement {
   id: number;
@@ -15,6 +15,12 @@ interface ITableProps {
 }
 
 const Table: React.FC<ITableProps> = ({ isEditable }) => {
+  const cols = [
+    { name: ' № Помещения' },
+    { name: 'Собственник' },
+    { name: 'Площадь' },
+    { name: 'Лицевой счет' },
+  ];
   const da = [
     {
       id: 1,
@@ -92,18 +98,11 @@ const Table: React.FC<ITableProps> = ({ isEditable }) => {
         <table className="w-full text-sm text-left text-gray-500 shadow-md ">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
-              <th scope="col" className="px-6 py-3">
-                № Помещения
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Собственник
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Площадь
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Лицевой счет
-              </th>
+              {cols.map((col) => (
+                <th scope="col" className="px-6 py-3">
+                  {col.name}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>

@@ -1,10 +1,23 @@
 import Button from 'Components/Button';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Table from '../EditableTable';
+import React, { ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const EditModal = () => {
-  const [isEditable, setIsEditable] = useState(false);
+interface IEditModal {
+  children?: ReactElement | ReactElement[];
+  isEditable: boolean;
+  setIsEditable: React.Dispatch<React.SetStateAction<boolean>>;
+  modalTitle: string;
+  buttonName: string;
+}
+
+const EditModal: React.FC<IEditModal> = ({
+  children,
+  isEditable,
+  setIsEditable,
+  modalTitle,
+  buttonName,
+}) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -14,7 +27,7 @@ const EditModal = () => {
             {/*header*/}
             <div className="flex items-center justify-between px-4 mb-4 rounded-t">
               <div className="flex">
-                <h3 className="text-2xl font-semibold">Объект управления</h3>
+                <h3 className="text-2xl font-semibold">{modalTitle}</h3>
                 {!isEditable && (
                   <button
                     onClick={() => setIsEditable(true)}
@@ -51,109 +64,31 @@ const EditModal = () => {
                   </button>
                 )}
               </div>
-              <Link to="/objects">
-                <button className="group p-1 ml-auto  border-0 text-accentDark leading-none font-semibold outline-none focus:outline-none hover:text-accent">
-                  <svg
-                    width="21"
-                    height="21"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M8 0C3.58171 0 0 3.58171 0 8C0 12.4183 3.58171 16 8 16C12.4183 16 16 12.4183 16 8C15.9949 3.58384 12.4162 0.00512903 8 0ZM8 15.4839C3.86677 15.4839 0.516129 12.1332 0.516129 8C0.516129 3.86677 3.86677 0.516129 8 0.516129C12.1332 0.516129 15.4839 3.86677 15.4839 8C15.4793 12.1314 12.1314 15.4793 8 15.4839Z"
-                      fill="#000"
-                      className="group-hover:fill-accent transition-colors"
-                    />
-                    <path
-                      d="M11.6495 4.35051C11.5487 4.24977 11.3854 4.24977 11.2846 4.35051L7.99994 7.63516L4.71529 4.35051C4.61629 4.248 4.45291 4.24516 4.35039 4.34416C4.24788 4.44316 4.24504 4.60655 4.34404 4.70906C4.3461 4.71122 4.34823 4.71332 4.35039 4.71542L7.63504 8.00006L4.35039 11.2847C4.24788 11.3837 4.24504 11.5471 4.34407 11.6496C4.4431 11.7521 4.60646 11.755 4.70897 11.6559C4.71113 11.6539 4.71323 11.6517 4.71529 11.6496L7.99994 8.36497L11.2846 11.6496C11.3871 11.7486 11.5505 11.7458 11.6495 11.6433C11.7461 11.5433 11.7461 11.3847 11.6495 11.2847L8.36484 8.00006L11.6495 4.71542C11.7502 4.61464 11.7502 4.45129 11.6495 4.35051Z"
-                      fill="#000"
-                      className="group-hover:fill-accent transition-colors"
-                    />
-                  </svg>
-                </button>
-              </Link>
+
+              <button
+                onClick={() => navigate(-1)}
+                className="group p-1 ml-auto  border-0 text-accentDark leading-none font-semibold outline-none focus:outline-none hover:text-accent">
+                <svg
+                  width="21"
+                  height="21"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M8 0C3.58171 0 0 3.58171 0 8C0 12.4183 3.58171 16 8 16C12.4183 16 16 12.4183 16 8C15.9949 3.58384 12.4162 0.00512903 8 0ZM8 15.4839C3.86677 15.4839 0.516129 12.1332 0.516129 8C0.516129 3.86677 3.86677 0.516129 8 0.516129C12.1332 0.516129 15.4839 3.86677 15.4839 8C15.4793 12.1314 12.1314 15.4793 8 15.4839Z"
+                    fill="#000"
+                    className="group-hover:fill-accent transition-colors"
+                  />
+                  <path
+                    d="M11.6495 4.35051C11.5487 4.24977 11.3854 4.24977 11.2846 4.35051L7.99994 7.63516L4.71529 4.35051C4.61629 4.248 4.45291 4.24516 4.35039 4.34416C4.24788 4.44316 4.24504 4.60655 4.34404 4.70906C4.3461 4.71122 4.34823 4.71332 4.35039 4.71542L7.63504 8.00006L4.35039 11.2847C4.24788 11.3837 4.24504 11.5471 4.34407 11.6496C4.4431 11.7521 4.60646 11.755 4.70897 11.6559C4.71113 11.6539 4.71323 11.6517 4.71529 11.6496L7.99994 8.36497L11.2846 11.6496C11.3871 11.7486 11.5505 11.7458 11.6495 11.6433C11.7461 11.5433 11.7461 11.3847 11.6495 11.2847L8.36484 8.00006L11.6495 4.71542C11.7502 4.61464 11.7502 4.45129 11.6495 4.35051Z"
+                    fill="#000"
+                    className="group-hover:fill-accent transition-colors"
+                  />
+                </svg>
+              </button>
             </div>
             {/*body*/}
-            <div className="flex flex-col mb-4">
-              <div className="relative p-2 flex-auto flex flex-wrap justify-center">
-                <div className="mb-4 mx-4">
-                  <label className="block text-gray text-sm font-bold mb-2">Регион</label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray leading-tight focus:outline-none focus:shadow-outline"
-                    id="username"
-                    type="text"
-                    placeholder="Кировская обл."
-                  />
-                </div>
-                <div className="mb-4 mx-4">
-                  <label className="block text-gray text-sm font-bold mb-2">Район</label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray leading-tight focus:outline-none focus:shadow-outline"
-                    id="username"
-                    type="text"
-                    placeholder="Яранский"
-                  />
-                </div>
-                <div className="mb-4 mx-4">
-                  <label className="block text-gray text-sm font-bold mb-2">Город</label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray leading-tight focus:outline-none focus:shadow-outline"
-                    id="username"
-                    type="text"
-                    placeholder="Яранск"
-                  />
-                </div>
-                <div className="mb-4 mx-4">
-                  <label className="block text-gray text-sm font-bold mb-2">Улица</label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray leading-tight focus:outline-none focus:shadow-outline"
-                    id="username"
-                    type="text"
-                    placeholder="Строительная"
-                  />
-                </div>
-                <div className="mb-4 mx-4">
-                  <label className="block text-gray text-sm font-bold mb-2">№ дома</label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray leading-tight focus:outline-none focus:shadow-outline"
-                    id="username"
-                    type="text"
-                    placeholder="9"
-                  />
-                </div>
-                <div className="mb-4 mx-4">
-                  <label className="block text-gray text-sm font-bold mb-2">Индекс</label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray leading-tight focus:outline-none focus:shadow-outline"
-                    id="username"
-                    type="text"
-                    placeholder="612260"
-                  />
-                </div>
-                <div className="mb-4 mx-4">
-                  <label className="block text-gray text-sm font-bold mb-2">Год постройки</label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray leading-tight focus:outline-none focus:shadow-outline"
-                    id="username"
-                    type="text"
-                    placeholder="1985"
-                  />
-                </div>
-
-                <div className="mb-4 mx-4">
-                  <label className="block text-gray text-sm font-bold mb-2">Площадь</label>
-                  <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray leading-tight focus:outline-none focus:shadow-outline"
-                    id="username"
-                    type="text"
-                    placeholder="4350,73"
-                  />
-                </div>
-              </div>
-              <div className="flex shadow-sm rounded-md">
-                <Table isEditable={isEditable} />
-              </div>
-            </div>
+            {children}
             {/*footer*/}
             {isEditable && (
               <div className="flex items-center justify-end p-2">
@@ -163,7 +98,7 @@ const EditModal = () => {
                   type="button">
                   Отмена
                 </button>
-                <Button name="Добавить" />
+                <Button name={buttonName} />
               </div>
             )}
           </div>

@@ -6,9 +6,16 @@ interface IModal {
   children: ReactElement | ReactElement[];
   header_name: string;
   button_name?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const AddModal: React.FC<IModal> = ({ closeModal, children, header_name, button_name }) => {
+const AddModal: React.FC<IModal> = ({
+  closeModal,
+  children,
+  header_name,
+  button_name,
+  onClick,
+}) => {
   return (
     <div>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -48,7 +55,7 @@ const AddModal: React.FC<IModal> = ({ closeModal, children, header_name, button_
 
             {button_name && (
               <div className="flex items-center justify-end ">
-                <Button name={button_name} />
+                <Button onClick={onClick} name={button_name} />
               </div>
             )}
           </div>

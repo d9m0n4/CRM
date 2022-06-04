@@ -9,14 +9,15 @@ import Select from 'Components/Select';
 import ModalInput from 'Components/ModalInput';
 
 const Votes = () => {
+  const options = ['Очная'];
+  const houses = ['г. Яранск, ул. Пролетарская, д. 3', 'г. Яранск, ул. Производственная, д. 11'];
+
   const [showModal, setShowModal] = useState(false);
+  const [opt, setOpt] = useState<typeof options[number]>('Очная');
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
-
-  const options = ['Очная'];
-  const houses = ['г. Яранск, ул. Пролетарская, д. 3', 'г. Яранск, ул. Производственная, д. 11'];
 
   return (
     <div className="flex w-full flex-col">
@@ -35,11 +36,11 @@ const Votes = () => {
               <div className="flex mb-4">
                 <div className="mx-2 w-full">
                   <span>Адрес</span>
-                  <Select options={houses} />
+                  <Select value={opt} onChange={setOpt} options={houses} />
                 </div>
                 <div className="mx-2 w-full">
                   <span>Форма</span>
-                  <Select options={options} />
+                  <Select value={opt} onChange={setOpt} options={options} />
                 </div>
               </div>
               <div className="flex mb-4">
@@ -55,7 +56,7 @@ const Votes = () => {
                 </div>
                 <div className="mx-2 w-1/2">
                   <span>Вид голосования</span>
-                  <Select options={options} />
+                  <Select value={opt} onChange={setOpt} options={options} />
                 </div>
               </div>
               <div className="flex mb-4">
@@ -65,7 +66,7 @@ const Votes = () => {
                 </div>
                 <div className="mx-2 w-full">
                   <span>Тип голосования</span>
-                  <Select options={options} />
+                  <Select value={opt} onChange={setOpt} options={options} />
                 </div>
               </div>
               <div className="flex mb-4">

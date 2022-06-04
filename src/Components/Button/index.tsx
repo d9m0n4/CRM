@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 interface IButton {
   name: string;
-  onClick?: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button: FC<IButton> = ({ name, onClick }) => {

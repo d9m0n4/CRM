@@ -1,10 +1,21 @@
 import React from 'react';
 
-interface ISelect {
-  options: string[];
-}
+type OptionValue = string | number;
 
-const Select: React.FC<ISelect> = ({ options }) => {
+type Props<Value extends OptionValue> = {
+  value: Value;
+  onChange: (newValue: Value) => void;
+  options: readonly Value[];
+};
+
+function Select<Value extends OptionValue>({
+  value,
+  onChange,
+  options,
+}: Props<Value>): JSX.Element {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onChange(options[e.currentTarget.selectedIndex]);
+  };
   return (
     <div className="relative mx-auto mt-2">
       <svg
@@ -18,13 +29,16 @@ const Select: React.FC<ISelect> = ({ options }) => {
           clipRule="evenodd"
         />
       </svg>
-      <select className="w-full p-2 text-gray bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-accent">
+      <select
+        value={value}
+        onChange={handleChange}
+        className="w-full p-2 text-gray bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-accent">
         {options.map((option) => (
           <option key={option}>{option}</option>
         ))}
       </select>
     </div>
   );
-};
+}
 
 export default Select;

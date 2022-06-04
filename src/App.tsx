@@ -10,11 +10,13 @@ import Documents from 'Pages/docsPage';
 import MainPage from 'Pages/mainPage';
 import Votes from 'Pages/votesPage';
 
-import EditModal from 'Components/EditModal';
 import Protokols from 'Components/Protocols';
 import Contracts from 'Components/Contracts';
 import Avatar from 'Components/Avatar';
 import NotFound from 'Pages/404';
+import ObjectsElement from 'Components/ObjectsElement';
+import AccauntsElement from 'Components/AccauntsElement';
+import DocumentsElement from 'Components/DocumentsElement';
 
 function App() {
   const location = useLocation();
@@ -327,14 +329,18 @@ function App() {
           <Routes location={state?.backgroundLocation || location}>
             <Route path="/" element={<MainPage />} />
             <Route path="objects" element={<Objects />}>
-              <Route path="e" element={<EditModal />} />
+              <Route path=":id" element={<ObjectsElement />} />
+            </Route>
+            <Route path="accaunts" element={<Accaunts />}>
+              <Route path=":id" element={<AccauntsElement />} />
             </Route>
             <Route path="docs" element={<Documents />}>
               <Route index element={<Contracts />} />
-              <Route path="contracts" element={<Contracts />} />
+              <Route path="contracts" element={<Contracts />}>
+                <Route path=":id" element={<DocumentsElement />} />
+              </Route>
               <Route path="protocols" element={<Protokols />} />
             </Route>
-            <Route path="accaunts" element={<Accaunts />} />
             <Route path="requests" element={<Requests />} />
             <Route path="votes" element={<Votes />} />
             <Route path="appeals" element={<Appeals />} />
