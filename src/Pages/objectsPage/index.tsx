@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-import Button from 'Components/Button';
-import PageTable from 'Components/PageTable';
-import PageTopBar from 'Components/PageTopBar';
+import Button from 'Components/Shared/Button';
+import PageTable from 'Components/Shared/PageTable';
+import PageTopBar from 'Components/Layout/PageTopBar';
 import { Link, Outlet } from 'react-router-dom';
-import AddModal from 'Components/AddModal';
+import AddModal from 'Components/Shared/AddModal';
 
 import { AddressSuggestions } from 'react-dadata';
 import { DADAT_API_KEY } from 'Constants';
 import 'react-dadata/dist/react-dadata.css';
-import ModalInput from 'Components/ModalInput';
+import ModalInput from 'Components/Shared/ModalInput';
 
 import DataGrid from 'react-data-grid';
 

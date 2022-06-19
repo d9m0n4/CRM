@@ -1,6 +1,6 @@
-import DatePicker from 'Components/datepicker';
-import EditModal from 'Components/EditModal';
-import ModalInput from 'Components/ModalInput';
+import DatePicker from 'Components/Shared/datepicker';
+import EditModal from 'Components/Shared/EditModal';
+import ModalInput from 'Components/Shared/ModalInput';
 import Plus from 'Components/ui/icons/Plus';
 import React, { useState } from 'react';
 
@@ -12,11 +12,11 @@ const DocumentsElement = () => {
       isEditable={isEditable}
       setIsEditable={setIsEditable}
       buttonName={'Сохранить'}
-      modalTitle={'Лицевой счет'}>
+      modalTitle={'Договор управления'}>
       <div className="w-full">
         <div className="flex">
           <div className="mx-2 w-full">
-            <span>Вид документа</span>
+            <span>Управляемый объект</span>
           </div>
           <div className="mx-2 w-full">
             <span>Яранск г, Фурманова ул, дом № 12</span>
@@ -115,23 +115,23 @@ const DocumentsElement = () => {
               <div className="w-1/2 text-center">
                 <div className="text-gray text-xl">Услуга</div>
                 <div className="p-4">
-                  <ModalInput placeholder="Наименование услуги" />
+                  <ModalInput
+                    placeholder="Наименование услуги"
+                    value="Водоснабжение"
+                    disabled={!isEditable}
+                  />
                 </div>
                 <div className="p-4">
-                  <button>
-                    <Plus />
-                  </button>
+                  <button>{isEditable && <Plus />}</button>
                 </div>
               </div>
               <div className="w-1/2 text-center">
                 <div className="text-gray text-xl">Тариф</div>
                 <div className="p-4">
-                  <ModalInput placeholder="Величина тарифа" />
+                  <ModalInput placeholder="Величина тарифа" value="45.98" disabled={!isEditable} />
                 </div>
                 <div className="p-4">
-                  <button>
-                    <Plus />
-                  </button>
+                  <button>{isEditable && <Plus />}</button>
                 </div>
               </div>
             </div>

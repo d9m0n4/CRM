@@ -1,12 +1,12 @@
-import AddModal from 'Components/AddModal';
-import DatePicker from 'Components/datepicker';
-import ModalInput from 'Components/ModalInput';
-import PageTopBar from 'Components/PageTopBar';
-import Select from 'Components/Select';
+import AddModal from 'Components/Shared/AddModal';
+import DatePicker from 'Components/Shared/datepicker';
+import ModalInput from 'Components/Shared/ModalInput';
+import PageTopBar from 'Components/Layout/PageTopBar';
+import Select from 'Components/Shared/Select';
 import Plus from 'Components/ui/icons/Plus';
 import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import Button from '../../Components/Button';
+import Button from '../../Components/Shared/Button';
 
 const Documents = () => {
   const options = ['Договор', 'Протокол'];

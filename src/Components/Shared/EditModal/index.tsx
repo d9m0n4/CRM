@@ -1,4 +1,4 @@
-import Button from 'Components/Button';
+import Button from 'Components/Shared/Button';
 import React, { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 

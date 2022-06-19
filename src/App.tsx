@@ -10,13 +10,13 @@ import Documents from 'Pages/docsPage';
 import MainPage from 'Pages/mainPage';
 import Votes from 'Pages/votesPage';
 
-import Protokols from 'Components/Protocols';
-import Contracts from 'Components/Contracts';
-import Avatar from 'Components/Avatar';
+import Protokols from 'Components/Layout/Protocols';
+import Contracts from 'Components/Layout/Contracts';
+import Avatar from 'Components/Shared/Avatar';
 import NotFound from 'Pages/404';
-import ObjectsElement from 'Components/ObjectsElement';
-import AccauntsElement from 'Components/AccauntsElement';
-import DocumentsElement from 'Components/DocumentsElement';
+import ObjectsElement from 'Components/Layout/ObjectsElement';
+import AccauntsElement from 'Components/Layout/AccauntsElement';
+import DocumentsElement from 'Components/Layout/DocumentsElement';
 
 function App() {
   const location = useLocation();

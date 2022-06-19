@@ -1,7 +1,7 @@
 import React from 'react';
 
-import PageTable from 'Components/PageTable';
-import PageTopBar from 'Components/PageTopBar';
+import PageTable from 'Components/Shared/PageTable';
+import PageTopBar from 'Components/Layout/PageTopBar';
 
 const Appeals = () => {
   return (

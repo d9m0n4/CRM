@@ -1,4 +1,4 @@
-import Button from 'Components/Button';
+import Button from 'Components/Shared/Button';
 import React, { MouseEventHandler, ReactElement } from 'react';
 
 interface IModal {

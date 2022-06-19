@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import Button from 'Components/Button';
-import PageTable from 'Components/PageTable';
-import PageTopBar from 'Components/PageTopBar';
+import Button from 'Components/Shared/Button';
+import PageTable from 'Components/Shared/PageTable';
+import PageTopBar from 'Components/Layout/PageTopBar';
 import { Outlet } from 'react-router-dom';
-import AddModal from 'Components/AddModal';
-import Select from 'Components/Select';
-import ModalInput from 'Components/ModalInput';
+import AddModal from 'Components/Shared/AddModal';
+import Select from 'Components/Shared/Select';
+import ModalInput from 'Components/Shared/ModalInput';
 
 const Votes = () => {
   const options = ['Очная'];

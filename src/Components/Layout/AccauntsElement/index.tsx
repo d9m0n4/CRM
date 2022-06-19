@@ -1,5 +1,4 @@
-import Table from 'Components/EditableTable';
-import EditModal from 'Components/EditModal';
+import EditModal from 'Components/Shared/EditModal';
 import React, { useState } from 'react';
 
 const AccauntsElement = () => {

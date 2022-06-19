@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import Button from 'Components/Button';
-import PageTable from 'Components/PageTable';
-import PageTopBar from 'Components/PageTopBar';
-import AddModal from 'Components/AddModal';
+import Button from 'Components/Shared/Button';
+import PageTable from 'Components/Shared/PageTable';
+import PageTopBar from 'Components/Layout/PageTopBar';
+import AddModal from 'Components/Shared/AddModal';
 import { Link, Outlet } from 'react-router-dom';
-import ModalInput from 'Components/ModalInput';
-import Select from 'Components/Select';
+import ModalInput from 'Components/Shared/ModalInput';
+import Select from 'Components/Shared/Select';
 
 const Accaunts = () => {
   const options = ['кв 1', 'кв 2'];
