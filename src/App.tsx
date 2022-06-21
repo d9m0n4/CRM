@@ -22,8 +22,6 @@ function App() {
   const location = useLocation();
   let state = location.state as { backgroundLocation?: Location };
 
-  console.log(location);
-
   return (
     <div className="flex h-screen container mx-auto text-base">
       {/* navbar */}

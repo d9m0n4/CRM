@@ -1,9 +1,27 @@
-import { API } from 'api/axios';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 
-class House {
-  createHouse = async () => {
-    API.post('/house');
-  };
-}
+export const HouseAPI = createApi({
+  reducerPath: 'HouseAPI',
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+  tagTypes: ['House'],
+  endpoints: (build) => ({
+    fetchAllHouses: build.query({
+      query: () => `house`,
+    }),
+    fetchHouseById: build.query({
+      query: (id) => ({
+        url: `/house/${id}`,
+      }),
+    }),
+    createHouse: build.mutation({
+      query: (house) => ({
+        url: '/house',
+        method: 'POST',
+        body: house,
+      }),
+      invalidatesTags: ['House'],
+    }),
+  }),
+});
 
-export default new House();
+export const { useFetchAllHousesQuery, useFetchHouseByIdQuery, useCreateHouseMutation } = HouseAPI;

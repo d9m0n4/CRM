@@ -99,7 +99,7 @@ const Table: React.FC<ITableProps> = ({ isEditable }) => {
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
               {cols.map((col) => (
-                <th scope="col" className="px-6 py-3">
+                <th key={col.name} scope="col" className="px-6 py-3">
                   {col.name}
                 </th>
               ))}
