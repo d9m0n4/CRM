@@ -1,9 +1,20 @@
+import { API } from 'api/axios';
 import Table from 'Components/Shared/EditableTable';
 import EditModal from 'Components/Shared/EditModal';
-import React, { useState } from 'react';
+import { useAppSelector } from 'hooks/redux';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const ObjectsElement = () => {
   const [isEditable, setIsEditable] = useState(false);
+  const [currentHouse, setCurrentHouse] = useState();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    API.get(`house/${id}`).then(({ data }) => setCurrentHouse(data));
+    console.log(currentHouse);
+  }, []);
 
   const a = ['Регион', 'Район', 'Город', 'Улица', '№ дома', 'Индекс', 'Год постройки', ' Площадь'];
   const b = [

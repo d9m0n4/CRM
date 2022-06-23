@@ -50,7 +50,7 @@ export const HouseSlice = createSlice({
     [createHouse.fulfilled.type]: (state, action) => {
       state.error = null;
       state.isLoading = false;
-      state.items = action.payload;
+      state.items = [...state.items, action.payload];
     },
     [createHouse.rejected.type]: (state, action) => {
       state.error = action.payload.message;

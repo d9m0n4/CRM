@@ -13,17 +13,15 @@ import ModalInput from 'Components/Shared/ModalInput';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { createHouse, fetchHouses } from 'store/reducers/actionCreators';
 import Loader from 'Components/Shared/Loader';
+import { toYear } from 'helpers/toDate';
 
 const Objects = () => {
   const [showModal, setShowModal] = useState(false);
   const [data, setData] = useState<any>();
 
   const dispatch = useAppDispatch();
-  const { items, isLoading, error } = useAppSelector((state) => state.HouseReducer);
 
-  useEffect(() => {
-    dispatch(fetchHouses());
-  }, []);
+  const { items, isLoading, error } = useAppSelector((state) => state.HouseReducer);
 
   const thead = [
     { key: 'num', name: '№ п/п' },
@@ -58,6 +56,10 @@ const Objects = () => {
     setShowModal(false);
   };
 
+  useEffect(() => {
+    dispatch(fetchHouses());
+  }, []);
+
   return (
     <div className="flex w-full flex-col">
       <PageTopBar>
@@ -76,9 +78,9 @@ const Objects = () => {
                   {body.adr}
                 </th>
                 <td className="px-6 py-4">{`${body.sq} кв.м`}</td>
-                <td className="px-6 py-4">{body.year}</td>
+                <td className="px-6 py-4">{`${toYear(body.year)} г.`}</td>
                 <td className="px-6 py-4 ">
-                  <Link to={body.id}>
+                  <Link to={`${body.id}`}>
                     <svg
                       className="cursor-pointer"
                       width="18"

@@ -29,23 +29,23 @@ export const fetchHouses = createAsyncThunk('house/fetchAll', async (_, thunkAPI
     const response = await API.get('/house');
     return response.data;
   } catch (error) {
-    thunkAPI.rejectWithValue('не удалось загрузить объекты');
+    return thunkAPI.rejectWithValue('не удалось загрузить объекты');
   }
 });
 
 export const fetchHouseById = createAsyncThunk('house/fetchById', async (id: number, thunkAPI) => {
   try {
-    const response = await API.get(`/house/${id}`);
-    return response.data;
+    const { data } = await API.get(`/house/${id}`);
+    return data;
   } catch (error) {
-    thunkAPI.rejectWithValue('не удалось загрузить объект');
+    return thunkAPI.rejectWithValue('не удалось загрузить объект');
   }
 });
 
 export const createHouse = createAsyncThunk('house/create', async (house: IHouse, thunkAPI) => {
   try {
-    const response = await API.post(`/house`, house);
-    return response;
+    const { data } = await API.post(`/house`, house);
+    return data;
   } catch (err: any | AxiosError) {
     let error: AxiosError<ValidationErrors> = err;
     return thunkAPI.rejectWithValue(error?.response?.data);
